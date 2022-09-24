@@ -17,7 +17,7 @@ function Main(props) {
   useEffect(() => {
     let unsubscribe
     api.query.templateModule
-      .chain_save_local_storage(newValue => {
+      .chainSaveLocalStorage(newValue => {
         // The storage value is an Option<u32>
         // So we have to check whether it is None first
         // There is also unwrapOr
@@ -37,7 +37,7 @@ function Main(props) {
 
   return (
     <Grid.Column width={8}>
-      <h1>Template Module</h1>
+      <h1>Template-Module</h1>
       <Card centered>
         <Card.Content textAlign="center">
           <Statistic label="Current Value" value={currentValue} />
@@ -59,7 +59,7 @@ function Main(props) {
             setStatus={setStatus}
             attrs={{
               palletRpc: 'templateModule',
-              callable: 'chain_save_local_storage',
+              callable: 'chainSaveLocalStorage',
               inputParams: [formValue],
               paramFields: [true],
             }}
@@ -73,7 +73,7 @@ function Main(props) {
 
 export default function TemplateModule(props) {
   const { api } = useSubstrateState()
-  return api.query.templateModule && api.query.templateModule.chain_save_local_storage ? (
+  return api.query.templateModule && api.query.templateModule.chainSaveLocalStorage ? (
     <Main {...props} />
   ) : null
 }
